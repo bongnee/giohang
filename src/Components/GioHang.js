@@ -160,7 +160,7 @@ export default class GioHang extends Component {
         }
         let productCartUpdate = [...this.state.productCart];
 
-        // tìm sp đã có trong giỏ hàng ko?
+        
         let spFind = this.state.productCart.find((proCart) => {
             return proCart.id === spGH.id
         })
@@ -220,11 +220,17 @@ export default class GioHang extends Component {
 
    sumProCart = () => { 
       let tongSL = 0;
-          
+        for (let i= 0; i <  this.state.productCart.length; i++) {
+          const p = this.state.productCart[i];
+          tongSL += p.soLuong;
+
+        }  
           
       return tongSL;
+      
 
     }
+   
 
   render() {
     return (
@@ -239,7 +245,7 @@ export default class GioHang extends Component {
               data-target="#exampleModal"
               className="text-danger"
             >
-              Giỏ hàng ()
+              Giỏ hàng ({this.sumProCart()})
             </p>
           </div>
         </div>
